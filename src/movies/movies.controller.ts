@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param,Patch,Post, Put, Query } from '@nestjs/common';
 import { create } from 'domain';
+import { CreateMovieDto } from 'src/moives/dto/create-movie.dto';
 import { Movie } from 'src/moives/entities/movie.entity';
 import { MoivesService } from 'src/moives/moives.service';
 
@@ -25,7 +26,7 @@ export class MoviesController {
     }
    
     @Post()
-    create(@Body() movieData){
+    create(@Body() movieData:CreateMovieDto){
         return this.movieService.create(movieData)
     }
 
