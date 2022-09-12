@@ -32,6 +32,5 @@ export class MoivesService {
         const movie = this.getOne(id);
         this.deleteOne(id)
         this.movies.push({...movie,...updateData})
-
     }
 }
