@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param,Patch,Post, Put, Query } from '@nestjs/common';
 import { create } from 'domain';
 import { CreateMovieDto } from 'src/moives/dto/create-movie.dto';
+import { UpdateMovieDto } from 'src/moives/dto/update-movie.dto';
 import { Movie } from 'src/moives/entities/movie.entity';
 import { MoivesService } from 'src/moives/moives.service';
 
@@ -20,7 +21,7 @@ export class MoviesController {
     }
 
     @Get(':id')
-    getOne(@Param('id') movieId: string):Movie { // @Param에 들어있는 인자와 위의 get :id는 같아야 한다. 
+    getOne(@Param('id') movieId: number):Movie { // @Param에 들어있는 인자와 위의 get :id는 같아야 한다. 
         //id라는 parameter를 movieId라는 argument에 string 타입으로저장하고 싶어
         return this.movieService.getOne(movieId);
     }
@@ -31,12 +32,12 @@ export class MoviesController {
     }
 
     @Delete(':id')
-    remove(@Param('id') movieId: string) {
+    remove(@Param('id') movieId: number) {
         return this.movieService.deleteOne(movieId);
     }
 
     @Patch(':id')
-    update(@Param('id') movieId: string, @Body() updateData) {
+    update(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
         return this.movieService.update(movieId,updateData)
     }
     
