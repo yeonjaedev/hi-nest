@@ -1,14 +1,14 @@
 import { Body, Controller, Delete, Get, Param,Patch,Post, Put, Query } from '@nestjs/common';
 import { create } from 'domain';
-import { CreateMovieDto } from 'src/moives/dto/create-movie.dto';
-import { UpdateMovieDto } from 'src/moives/dto/update-movie.dto';
-import { Movie } from 'src/moives/entities/movie.entity';
-import { MoivesService } from 'src/moives/moives.service';
+import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
+import { UpdateMovieDto } from 'src/movies/dto/update-movie.dto';
+import { Movie } from 'src/movies/entities/movie.entity';
+import { moviesService } from 'src/movies/movies.service';
 
 @Controller('movies')
 export class MoviesController {
 
-    constructor (private readonly movieService: MoivesService) {};
+    constructor (private readonly movieService: moviesService) {};
 
     @Get()
     getAll() :Movie[]{
